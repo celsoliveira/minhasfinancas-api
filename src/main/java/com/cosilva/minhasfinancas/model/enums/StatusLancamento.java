@@ -4,5 +4,6 @@ public enum StatusLancamento {
 
 	PENDENTE,
 	CANCELADO,
-	PAGO
+	PAGO,
+	EFETIVADO
 }

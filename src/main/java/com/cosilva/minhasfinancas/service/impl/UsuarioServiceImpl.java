@@ -2,9 +2,8 @@ package com.cosilva.minhasfinancas.service.impl;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cosilva.minhasfinancas.exception.ErroAutenticacao;
 import com.cosilva.minhasfinancas.exception.RegraNegocioException;
@@ -54,6 +53,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throw new RegraNegocioException("Já existe usuário cadastrado com este email.");
 		}
 		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Usuario> obterPorId(Long id) {
+		return repository.findById(id);
 	}
 
 }
